@@ -20,7 +20,7 @@ namespace EasyJet.Interview
 
         public T Get(I id)
         {
-            throw new NotImplementedException();
+            return entities.Find(Item => Item.Id.Equals(id));
         }
 
         public void Delete(I id)
