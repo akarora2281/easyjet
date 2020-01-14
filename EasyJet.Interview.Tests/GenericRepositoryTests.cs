@@ -37,5 +37,19 @@ namespace EasyJet.Interview.Tests
             //Assert
             Assert.IsTrue(((IEnumerable<TestEmployee>)expectedResult).Contains(newEmployee));
         }
+
+        [Test]
+        public void Should_Return_Item_WhenItem_Id_Provided()
+        {
+            _repository = new GenericRepository<TestEmployee, int>();
+            var employee1 = new TestEmployee { Id = 1, EmployeeName = "Emp1" };
+            var employee2 = new TestEmployee { Id = 2, EmployeeName = "Emp2" };
+
+            _repository.Save(employee1);
+            _repository.Save(employee2);
+
+            Assert.AreEqual(employee1, _repository.Get(1));
+            Assert.AreEqual(employee2, _repository.Get(2));
+        }
     }
 }
