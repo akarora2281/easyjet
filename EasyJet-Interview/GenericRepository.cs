@@ -30,7 +30,8 @@ namespace EasyJet.Interview
             
         public void Save(T item)
         {
-
+            Delete(item.Id); // This is to avoid Duplicate entries
+            entities.Add(item);
         }
     }
 }
