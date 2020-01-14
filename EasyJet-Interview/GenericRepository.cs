@@ -25,7 +25,8 @@ namespace EasyJet.Interview
 
         public void Delete(I id)
         {
-
+            var item = Get(id);
+            entities.Remove(item);
         }
             
         public void Save(T item)
