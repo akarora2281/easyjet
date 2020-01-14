@@ -51,5 +51,23 @@ namespace EasyJet.Interview.Tests
             Assert.AreEqual(employee1, _repository.Get(1));
             Assert.AreEqual(employee2, _repository.Get(2));
         }
+
+        [Test]
+        public void Should_Delete_Item_From_Repository_When_Delete_Mthod_Called_With_ItemId()
+        {
+            _repository = new GenericRepository<TestEmployee, int>();
+            var employee1 = new TestEmployee { Id = 1, EmployeeName = "Emp1" };
+            var employee2 = new TestEmployee { Id = 2, EmployeeName = "Emp2" };
+
+            _repository.Save(employee1);
+            _repository.Save(employee2);
+
+            _repository.Save(employee1);
+            _repository.Delete(1);
+
+            expectedResult = _repository.GetAll();
+
+            Assert.IsFalse(((IEnumerable<TestEmployee>)expectedResult).Contains(employee1));
+        }
     }
 }
