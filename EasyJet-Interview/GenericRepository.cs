@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using EasyJet.Interview.Interface;
 
 namespace EasyJet.Interview
@@ -25,8 +24,7 @@ namespace EasyJet.Interview
 
         public void Delete(I id)
         {
-            var item = Get(id);
-            entities.Remove(item);
+            entities.Remove(Get(id));
         }
             
         public void Save(T item)
