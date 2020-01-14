@@ -2,7 +2,7 @@
 using System.Data;
 using System.Collections;
 
-namespace Interview
+namespace EasyJet.Interview.Interface
 {
     public interface IStoreable<T>
     {

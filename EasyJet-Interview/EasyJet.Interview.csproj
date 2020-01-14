@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <RootNamespace>EasyJet_Interview</RootNamespace>
+    <RootNamespace>EasyJet.Interview</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

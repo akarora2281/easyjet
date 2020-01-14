@@ -2,7 +2,7 @@ using NUnit.Framework;
 
 namespace EasyJet.Interview.Tests
 {
-    public class RepositoryTests
+    public class GenericRepositoryTests
     {
         [SetUp]
         public void Setup()
@@ -10,9 +10,9 @@ namespace EasyJet.Interview.Tests
         }
 
         [Test]
-        public void Test_Repository_List_Returns_IEnumberable_CorrectType()
+        public void Should_Returns_IEnumberable_When_GetAll_Method_Called()
         {
-            Assert.Pass();
+            Assert.Fail();
         }
     }
 }
