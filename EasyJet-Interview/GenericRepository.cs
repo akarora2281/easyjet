@@ -6,9 +6,16 @@ namespace EasyJet.Interview
 {
     public class GenericRepository<T, I> : IRepository<T, I> where T : IStoreable<I>
     {
+        private List<T> entities;
+
+        public GenericRepository()
+        {
+            entities = new List<T>();
+        }
+
         public IEnumerable<T> GetAll()
         {
-            throw new NotImplementedException();
+            return entities;
         }
 
         public T Get(I id)
