@@ -4,47 +4,43 @@ using NUnit.Framework;
 
 namespace EasyJet.Interview.Tests
 {
+    [TestFixture]
     public class GenericRepositoryTests
     {
         private object expectedResult;
 
         public GenericRepository<TestEmployee, int> _repository { get; private set; }
 
+        private TestEmployee employee1, employee2;
+
+        [SetUp]
+        public void Setup()
+        {
+            _repository = new GenericRepository<TestEmployee, int>();
+            employee1 = new TestEmployee { Id = 1, EmployeeName = "Emp1" };
+            employee2 = new TestEmployee { Id = 2, EmployeeName = "Emp2" };
+        }
+
         [Test]
         public void Should_Returns_IEnumberable_When_GetAll_Method_Called()
         {
-            //Arrange
-            _repository = new GenericRepository<TestEmployee, int>();
-
-            // Act
             expectedResult = _repository.GetAll();
 
-            //Assert
             Assert.NotNull(expectedResult);
         }
 
         [Test]
         public void Should_Save_NewItem_When_AddNewItem_Called_With_Valid_ItemData()
         {
-            //Arrange
-            _repository = new GenericRepository<TestEmployee, int>();
-            var newEmployee = new TestEmployee { Id = 1, EmployeeName = "Emp1" };
-
-            // Act
-            _repository.Save(newEmployee);
+            _repository.Save(employee1);
             expectedResult = _repository.GetAll();
 
-            //Assert
-            Assert.IsTrue(((IEnumerable<TestEmployee>)expectedResult).Contains(newEmployee));
+            Assert.IsTrue(((IEnumerable<TestEmployee>)expectedResult).Contains(employee1));
         }
 
         [Test]
         public void Should_Return_Item_WhenItem_Id_Provided()
         {
-            _repository = new GenericRepository<TestEmployee, int>();
-            var employee1 = new TestEmployee { Id = 1, EmployeeName = "Emp1" };
-            var employee2 = new TestEmployee { Id = 2, EmployeeName = "Emp2" };
-
             _repository.Save(employee1);
             _repository.Save(employee2);
 
@@ -55,14 +51,9 @@ namespace EasyJet.Interview.Tests
         [Test]
         public void Should_Delete_Item_From_Repository_When_Delete_Mthod_Called_With_ItemId()
         {
-            _repository = new GenericRepository<TestEmployee, int>();
-            var employee1 = new TestEmployee { Id = 1, EmployeeName = "Emp1" };
-            var employee2 = new TestEmployee { Id = 2, EmployeeName = "Emp2" };
-
             _repository.Save(employee1);
             _repository.Save(employee2);
 
-            _repository.Save(employee1);
             _repository.Delete(1);
 
             expectedResult = _repository.GetAll();
